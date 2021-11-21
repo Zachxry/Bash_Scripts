@@ -1,2 +1,2 @@
-# Bash_Scripts
+# Bash Scripts
 Repo for my custom bash scripts
