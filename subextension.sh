@@ -3,7 +3,7 @@
 # Working on adding additional features
 
 
-read -p "Enter hostname: " host
+read -p "Enter hostname (Ex: google.com): " host
 
 echo "[+] Running Sublist3r..."
 sublist3r -d $host > sublist3r.txt
@@ -11,11 +11,7 @@ sublist3r -d $host > sublist3r.txt
 echo "[+] Cleaning output..."
 cat sublist3r.txt | sed -r "s/\x1B\[([0-9]{1,3}(;[0-9]{1,2})?)?[mGK]//g" > cleaned.txt
 
-cat cleaned.txt | cut -d'.' -f2,3 | tail -n 1 > host.txt
-
-hostname=$(cat host.txt)
-
-grep -o "[^/]*.$hostname" cleaned.txt | sort | grep -wv 'Enumerating' > list.txt
+grep -o "[^/]*.$host" cleaned.txt | sort | grep -wv 'Enumerating' > list.txt
 
 echo "[+] Handling subdomain lookup..."
 for domains in $(cat list.txt); do nslookup $domains >> nslookup.txt
