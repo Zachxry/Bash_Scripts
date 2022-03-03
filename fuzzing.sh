@@ -45,7 +45,7 @@ done
 
 shift $((OPTIND-1))
 
-# If ip or type left blank, print usage
+# If type left blank, print usage
 if [ -z "${type}" ]; then
 	usage
 fi
