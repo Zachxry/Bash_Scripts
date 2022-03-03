@@ -50,10 +50,16 @@ if [ -z "${type}" ]; then
 	usage
 fi
 
-# Default to 80 if no port specified
+# If no port specified, default to port 80
 if [ -z ${port} ]; then
 	port=80
 fi
+
+# If no IP specified, default to localhost
+if [ -z ${ip} ]; then
+	ip=127.0.0.1
+fi
+
 
 ####### Checking Fuzz Type ######
 # If type dir then directory fuzz
